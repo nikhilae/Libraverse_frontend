@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+import Grid from "@mui/material/Grid";
 
 function Books1() {
   var b = "Shreyas";
@@ -26,17 +33,34 @@ function Books1() {
 
   return (
     <div>
-      Inspect ctrl + shift + i to view data!
+      BookStore
       <br />
-      {res.slice(0, 5).map(function (obj) {
-        return (
-          <div>
-            Title: {obj.title}
-            ISBN: {obj.isbn}
-            <br />
-          </div>
-        );
-      })}
+      <Grid container spacing={4}>
+        {res.slice(0, 12).map(function (obj) {
+          return (
+            <Grid item xs={3}>
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="150"
+                    image={obj.imageUrl}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {obj.title}
+                    </Typography>
+                    {/* <Typography variant="body2" color="text.secondary">
+                  {obj.description}
+                </Typography> */}
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          );
+        })}
+      </Grid>
     </div>
   );
 }
