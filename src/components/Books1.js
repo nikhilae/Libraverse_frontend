@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 
 function Books1() {
   var b = "Shreyas";
@@ -38,26 +39,28 @@ function Books1() {
       <Grid container spacing={4}>
         {res.slice(0, 12).map(function (obj) {
           return (
-            <Grid item xs={3}>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="150"
-                    image={obj.imageUrl}
-                    alt="green iguana"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {obj.title}
-                    </Typography>
-                    {/* <Typography variant="body2" color="text.secondary">
+            <Link to="/details" state={[obj.id, obj.title, obj.description]}>
+              <Grid item xs={3}>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="150"
+                      image={obj.imageUrl}
+                      alt="green iguana"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {obj.title}
+                      </Typography>
+                      {/* <Typography variant="body2" color="text.secondary">
                   {obj.description}
                 </Typography> */}
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            </Link>
           );
         })}
       </Grid>
