@@ -21,7 +21,13 @@ function Details() {
   function addToCartClickFun(){
     console.log("Add to cart button clicked!!")
     // Backend call 
-    // var response = axios.get("localhost:8080/addToCart");
+    var body={
+      title: a.title, imageUrl: a.imageUrl, quantity: quantity, price: a.price
+    } 
+    
+    var response = axios.post("http://localhost:8080/cart/addToCart", body);
+
+    console.log(response);
     // const obj = [obj.title, obj.imageUrl, obj.quantity, obj.price];
     // pOST request 
 
