@@ -14,18 +14,18 @@ import axios from "axios";
 
 function Details() {
   const a = useLocation().state;
-  var [quantity, setQuantity] = useState(1);
+  var [cart, setQuantity] = useState([]);
 
   console.log(a);
 
-  function addToCartClickFun(){
+  async function addToCartClickFun(){
     console.log("Add to cart button clicked!!")
     // Backend call 
     var body={
       title: a.title, imageUrl: a.imageUrl, quantity: quantity, price: a.price
     } 
-    
-    var response = axios.post("http://localhost:8080/cart/addToCart", body);
+
+    var response = await axios.post("http://localhost:8080/cart/addToCart", body);
 
     console.log(response);
     // const obj = [obj.title, obj.imageUrl, obj.quantity, obj.price];
@@ -85,7 +85,7 @@ function Details() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-          <Button onClick={addToCartClickFun()} size="small" color="primary">
+          <Button onClick={addToCartClickFun} size="small" color="primary">
               Add to cart
               {/* quantity, price, title, imageURL */}
             </Button>
