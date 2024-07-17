@@ -5,6 +5,8 @@ import Books1 from "./components/Books1";
 import Map from "./components/Map";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Details from "./components/Details";
+import Cart from "./components/Cart";
+
 function App() {
   return (
     <div className="App">
@@ -12,6 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Books1 />} />
           <Route path="/details" element={<Details />} />
+
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>

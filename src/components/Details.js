@@ -8,6 +8,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { InputLabel, Select, MenuItem } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 // function Details() {
 //   const a = useLocation();
 //   console.log();
@@ -89,10 +90,13 @@ function Details() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button onClick={addToCartClickFun} size="small" color="primary">
-              Add to cart
-              {/* quantity, price, title, imageURL */}
-            </Button>
+            <Link to="/cart">
+              <Button onClick={addToCartClickFun} size="small" color="primary">
+                Add to cart
+                {/* quantity, price, title, imageURL */}
+              </Button>
+            </Link>
+
             <Button size="small" color="primary">
               Buy now
             </Button>
