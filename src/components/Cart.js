@@ -28,8 +28,10 @@ function Cart() {
 
   const deleteCartItem = async (a) => {
     let url = "http://localhost:8080/cart/deleteCartItem/" + a;
-    let res = await axios.post(url);
-    console.log(url);
+    let res1 = await axios.post(url);
+    setRes(res1.data);
+    console.log(res1.data);
+    alert("cart item deleted");
   };
 
   return (
@@ -54,7 +56,7 @@ function Cart() {
                 />
                 <CardActions>
                   <Button
-                    onClick={deleteCartItem(item.id)}
+                    onClick={() => deleteCartItem(item.id)}
                     size="small"
                     color="primary"
                   >
