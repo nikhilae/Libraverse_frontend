@@ -23,6 +23,7 @@ function Details() {
     console.log("Add to cart button clicked!!");
     // Backend call
     var body = {
+      id: a.id,
       title: a.title,
       imageUrl: a.imageUrl,
       quantity: quantity,
