@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { InputLabel, Select, MenuItem } from "@mui/material";
 import { useState } from "react";
+
 import axios from "axios";
 import { Link } from "react-router-dom";
 // function Details() {
@@ -15,6 +16,7 @@ import { Link } from "react-router-dom";
 
 function Details() {
   const a = useLocation().state;
+  const nav = useNavigate();
   var [quantity, setQuantity] = useState(1);
 
   console.log(a);
@@ -34,6 +36,7 @@ function Details() {
       "http://localhost:8080/cart/addToCart",
       body
     );
+    nav("/cart");
 
     console.log(response);
     // const obj = [obj.title, obj.imageUrl, obj.quantity, obj.price];
@@ -91,12 +94,12 @@ function Details() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Link to="/cart">
-              <Button onClick={addToCartClickFun} size="small" color="primary">
-                Add to cart
-                {/* quantity, price, title, imageURL */}
-              </Button>
-            </Link>
+            {/* <Link to="/cart"> */}
+            <Button onClick={addToCartClickFun} size="small" color="primary">
+              Add to cart
+              {/* quantity, price, title, imageURL */}
+            </Button>
+            {/* </Link> */}
 
             <Button size="small" color="primary">
               Buy now

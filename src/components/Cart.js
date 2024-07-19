@@ -3,10 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import Map from "./Map";
-import { Card, Grid } from "@mui/material";
+import { Card, CardActions, Grid } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import Container from "@mui/material/Container";
+import { Button } from "@mui/material";
 function Cart() {
+  var totalSum = 0;
   var [res, setRes] = useState([]);
 
   useEffect(() => {
@@ -20,6 +22,16 @@ function Cart() {
     fetchData();
   }, []);
 
+  res.map((item) => {
+    totalSum += item.price * item.quantity;
+  });
+
+  const deleteCartItem = async (a) => {
+    let url = "http://localhost:8080/cart/deleteCartItem/" + a;
+    let res = await axios.post(url);
+    console.log(url);
+  };
+
   return (
     <div>
       <Container fixed>
@@ -29,6 +41,9 @@ function Cart() {
               <Card>
                 {/* Render item details here, e.g., item.name, item.price, etc. */}
                 {item.title}-${item.price}
+                <br />
+                {item.quantity}
+                <br />
                 <CardMedia
                   component="img"
                   height="200"
@@ -37,10 +52,22 @@ function Cart() {
                   // alt={obj.title || "image"}
                   // sx={{ objectFit: "cover" }}
                 />
+                <CardActions>
+                  <Button
+                    onClick={deleteCartItem(item.id)}
+                    size="small"
+                    color="primary"
+                  >
+                    Delete Item
+                  </Button>
+                </CardActions>
+                {/*  */}
               </Card>
             </Grid>
           ))}
         </Grid>
+        <br />
+        Total price =${totalSum.toFixed(2)}
       </Container>
     </div>
   );
