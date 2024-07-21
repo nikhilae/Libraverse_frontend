@@ -10,12 +10,14 @@ import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 function Books1() {
   var b = "Shreyas";
   b = 2;
   const [res, setRes] = useState([]);
+
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -40,6 +42,10 @@ function Books1() {
     alert("cart deleted");
   };
 
+  const searchButton = () => {
+
+  }
+
   // const viewCart = async () => {
   //   let url = "http://localhost:8080/cart/deleteCart";
   //   let res = await axios.post(url);
@@ -47,7 +53,7 @@ function Books1() {
   // };
 
   //setRes(b); // res = [backend array]
-
+  console.log(search);
   return (
     <div>
       BookStore
@@ -61,6 +67,17 @@ function Books1() {
         View Cart
         {/* quantity, price, title, imageURL */}
       </Link>
+      <br />
+      <br />
+      <TextField value={search} onChange={function (event) {
+                    // here in this function
+                    // i have to set value field above
+                    // to the new changed value
+                    // in event.target.value
+                    
+                    setSearch(event.target.value);
+                  }} label="Search" variant="outlined" />
+      <Button onClick={searchButton}>Submit</Button>
       <br />
       <br />
       <Container fixed>
