@@ -10,6 +10,7 @@ import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
+import { Button } from "@mui/material";
 
 function Books1() {
   var b = "Shreyas";
@@ -32,11 +33,35 @@ function Books1() {
   console.log(b);
   const x = JSON.stringify(res);
 
+  //declaring function using arrow function
+  const deleteCart = async () => {
+    let url = "http://localhost:8080/cart/deleteCart";
+    let res = await axios.post(url);
+    alert("cart deleted");
+  };
+
+  // const viewCart = async () => {
+  //   let url = "http://localhost:8080/cart/deleteCart";
+  //   let res = await axios.post(url);
+  //   alert("cart deleted");
+  // };
+
   //setRes(b); // res = [backend array]
 
   return (
     <div>
       BookStore
+      <br />
+      <Button onClick={deleteCart} size="small" color="primary">
+        Delete Cart
+        {/* quantity, price, title, imageURL */}
+      </Button>
+      <br />
+      <Link to="/cart">
+        View Cart
+        {/* quantity, price, title, imageURL */}
+      </Link>
+      <br />
       <br />
       <Container fixed>
         <Grid container spacing={4}>
