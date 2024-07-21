@@ -42,9 +42,13 @@ function Books1() {
     alert("cart deleted");
   };
 
-  const searchButton = () => {
+  const searchButton = async () => {
+    let url = "http://localhost:8080/api/books/search/" + search;
+    let res = await axios.get(url);
 
-  }
+    setRes(res.data);
+    console.log(res);
+  };
 
   // const viewCart = async () => {
   //   let url = "http://localhost:8080/cart/deleteCart";
@@ -69,14 +73,19 @@ function Books1() {
       </Link>
       <br />
       <br />
-      <TextField value={search} onChange={function (event) {
-                    // here in this function
-                    // i have to set value field above
-                    // to the new changed value
-                    // in event.target.value
-                    
-                    setSearch(event.target.value);
-                  }} label="Search" variant="outlined" />
+      <TextField
+        value={search}
+        onChange={function (event) {
+          // here in this function
+          // i have to set value field above
+          // to the new changed value
+          // in event.target.value
+
+          setSearch(event.target.value);
+        }}
+        label="Search"
+        variant="outlined"
+      />
       <Button onClick={searchButton}>Submit</Button>
       <br />
       <br />
