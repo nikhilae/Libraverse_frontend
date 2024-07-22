@@ -38,6 +38,13 @@ function Cart() {
     alert("cart item deleted");
   };
 
+  const update = async (id, quantity) => {
+    let url =
+      "http://localhost:8080/cart/updateCartQuantity/" + id + "/" + quantity;
+    let res2 = await axios.put(url);
+    setRes(res2.data);
+  };
+
   return (
     <div>
       <Container fixed>
@@ -66,6 +73,21 @@ function Cart() {
                       color="primary"
                     >
                       Delete Item
+                    </Button>
+
+                    <Button
+                      onClick={function (e) {
+                        update(item.id, item.quantity + 1);
+                      }}
+                    >
+                      +
+                    </Button>
+                    <Button
+                      onClick={function (e) {
+                        update(item.id, item.quantity - 1);
+                      }}
+                    >
+                      -
                     </Button>
                     {/* <NumberInput
                       // slotProps={{
