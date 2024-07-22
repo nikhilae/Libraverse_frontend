@@ -3,14 +3,17 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import Map from "./Map";
-import { Card, CardActions, Grid } from "@mui/material";
+import { Card, CardActions, CardContent, Grid } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import Container from "@mui/material/Container";
 import { Button } from "@mui/material";
+import { Unstable_NumberInput as NumberInput } from "@mui/base/Unstable_NumberInput";
 
 function Cart() {
   var totalSum = 0;
   var [res, setRes] = useState([]);
+
+  // var [count, setCount] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
@@ -56,13 +59,27 @@ function Cart() {
                   // sx={{ objectFit: "cover" }}
                 />
                 <CardActions>
-                  <Button
-                    onClick={() => deleteCartItem(item.id)}
-                    size="small"
-                    color="primary"
-                  >
-                    Delete Item
-                  </Button>
+                  <CardContent>
+                    <Button
+                      onClick={() => deleteCartItem(item.id)}
+                      size="small"
+                      color="primary"
+                    >
+                      Delete Item
+                    </Button>
+                    {/* <NumberInput
+                      // slotProps={{
+                      //   input: { className: "my-num-input" },
+                      //   incrementButton: { direction: "UP" },
+                      //   decrementButton: { direction: "DOWN" },
+                      // }}
+
+                      value={count}
+                      onChange={function (event) {
+                        setCount(event.target.value);
+                      }}
+                    /> */}
+                  </CardContent>
                 </CardActions>
                 {/*  */}
               </Card>

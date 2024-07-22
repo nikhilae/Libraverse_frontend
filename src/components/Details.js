@@ -61,6 +61,7 @@ function Details() {
               <Typography variant="body2" color="text.secondary">
                 {a.description}
               </Typography>
+
               <Typography variant="body3" color="text.primary">
                 Price: ${a.price}
               </Typography>
