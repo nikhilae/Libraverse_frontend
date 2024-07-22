@@ -8,6 +8,7 @@ import { CardMedia } from "@mui/material";
 import Container from "@mui/material/Container";
 import { Button } from "@mui/material";
 import { Unstable_NumberInput as NumberInput } from "@mui/base/Unstable_NumberInput";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function Cart() {
   var totalSum = 0;
@@ -53,9 +54,9 @@ function Cart() {
             <Grid item xs={3}>
               <Card>
                 {/* Render item details here, e.g., item.name, item.price, etc. */}
-                {item.title}-${item.price}
                 <br />
-                {item.quantity}
+                {item.title}
+                <br />
                 <br />
                 <CardMedia
                   component="img"
@@ -65,30 +66,47 @@ function Cart() {
                   // alt={obj.title || "image"}
                   // sx={{ objectFit: "cover" }}
                 />
+                <br />
+                Book Price: ${item.price}
+                <br />
+                <br />
+
+                <Button
+                      onClick={function (e) {
+                        update(item.id, item.quantity - 1);
+                      }}
+                      variant="outlined"
+                    >
+                      -
+                    </Button>
+                    &nbsp;
+                    &nbsp;
+                {item.quantity}&nbsp;&nbsp;
+                <Button
+                      onClick={function (e) {
+                        update(item.id, item.quantity + 1);
+                      }}
+                      variant="outlined"
+                    >
+                      +
+                    </Button>
+                    <br />
+                    <br />
+                    Book Total: {item.quantity * item.price}
+                    <br />
                 <CardActions>
                   <CardContent>
                     <Button
                       onClick={() => deleteCartItem(item.id)}
                       size="small"
                       color="primary"
+                      startIcon={<DeleteIcon />}
                     >
                       Delete Item
                     </Button>
 
-                    <Button
-                      onClick={function (e) {
-                        update(item.id, item.quantity + 1);
-                      }}
-                    >
-                      +
-                    </Button>
-                    <Button
-                      onClick={function (e) {
-                        update(item.id, item.quantity - 1);
-                      }}
-                    >
-                      -
-                    </Button>
+                    
+                    
                     {/* <NumberInput
                       // slotProps={{
                       //   input: { className: "my-num-input" },
@@ -109,7 +127,7 @@ function Cart() {
           ))}
         </Grid>
         <br />
-        Total price =${totalSum.toFixed(2)}
+        <h2>Cart Total =${totalSum.toFixed(2)}</h2>
       </Container>
     </div>
   );
