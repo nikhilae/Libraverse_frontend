@@ -9,6 +9,7 @@ import Container from "@mui/material/Container";
 import { Button } from "@mui/material";
 import { Unstable_NumberInput as NumberInput } from "@mui/base/Unstable_NumberInput";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Navbar from "./Navbar";
 
 function Cart() {
   var totalSum = 0;
@@ -48,6 +49,7 @@ function Cart() {
 
   return (
     <div>
+      <Navbar />
       <Container fixed>
         <Grid container spacing={4}>
           {res.map((item) => (

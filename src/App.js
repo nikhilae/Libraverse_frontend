@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Books from "./components/Books";
-import Books1 from "./components/Books1";
+import Home from "./components/Home";
 import Map from "./components/Map";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Details from "./components/Details";
@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Books1 />} />
+          <Route path="/" element={<Home />} />
           <Route path="/details" element={<Details />} />
 
           <Route path="/cart" element={<Cart />} />

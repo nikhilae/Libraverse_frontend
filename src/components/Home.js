@@ -11,8 +11,11 @@ import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import { Button, TextField } from "@mui/material";
+import Navbar from "./Navbar";
+import SearchIcon from '@mui/icons-material/Search';
+import Rating from "@mui/material/Rating";
 
-function Books1() {
+function Home() {
   var b = "Shreyas";
   b = 2;
   const [res, setRes] = useState([]);
@@ -36,11 +39,11 @@ function Books1() {
   const x = JSON.stringify(res);
 
   //declaring function using arrow function
-  const deleteCart = async () => {
-    let url = "http://localhost:8080/cart/deleteCart";
-    let res = await axios.post(url);
-    alert("cart deleted");
-  };
+  // const deleteCart = async () => {
+  //   let url = "http://localhost:8080/cart/deleteCart";
+  //   let res = await axios.post(url);
+  //   alert("cart deleted");
+  // };
 
   const searchButton = async () => {
     let url = "http://localhost:8080/api/books/search/" + search;
@@ -60,18 +63,7 @@ function Books1() {
   console.log(search);
   return (
     <div>
-      BookStore
-      <br />
-      <Button onClick={deleteCart} size="small" color="primary">
-        Delete Cart
-        {/* quantity, price, title, imageURL */}
-      </Button>
-      <br />
-      <Link to="/cart">
-        View Cart
-        {/* quantity, price, title, imageURL */}
-      </Link>
-      <br />
+      <Navbar />
       <br />
       <TextField
         value={search}
@@ -86,7 +78,7 @@ function Books1() {
         label="Search"
         variant="outlined"
       />
-      <Button onClick={searchButton}>Submit</Button>
+      <Button onClick={searchButton}><SearchIcon /></Button>
       <br />
       <br />
       <Container fixed>
@@ -109,6 +101,7 @@ function Books1() {
                           <Typography gutterBottom variant="h5" component="div">
                             {obj.title}
                           </Typography>
+                          <Rating name="read-only" value={obj.rating} readOnly />
                           <Typography gutterBottom variant="h6" component="div">
                             ${obj.price}
                           </Typography>
@@ -126,4 +119,4 @@ function Books1() {
   );
 }
 
-export default Books1;
+export default Home;

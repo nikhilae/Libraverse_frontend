@@ -10,6 +10,7 @@ import { useState } from "react";
 
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 // function Details() {
 //   const a = useLocation();
 //   console.log();
@@ -45,6 +46,7 @@ function Details() {
 
   return (
     <div>
+      <Navbar />
       {
         <Card sx={{ maxWidth: 345 }}>
           <CardActionArea>
