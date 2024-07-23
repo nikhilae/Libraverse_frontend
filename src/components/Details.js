@@ -104,9 +104,9 @@ function Details() {
             </Button>
             {/* </Link> */}
 
-            <Button size="small" color="primary">
+            {/* <Button size="small" color="primary">
               Buy now
-            </Button>
+            </Button> */}
           </CardActions>
         </Card>
       }
