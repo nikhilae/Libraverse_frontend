@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { InputLabel, Select, MenuItem } from "@mui/material";
 import { useState } from "react";
+import Container from "@mui/material/Container";
 
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -48,6 +49,10 @@ function Details() {
     <div>
       <Navbar />
       {
+       
+              <Container fixed>
+                 <br />
+                 <br />
         <Card sx={{ maxWidth: 345 }}>
           <CardActionArea>
             <CardMedia
@@ -109,6 +114,7 @@ function Details() {
             </Button> */}
           </CardActions>
         </Card>
+        </Container>
       }
     </div>
   );

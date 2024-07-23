@@ -46,7 +46,8 @@ function Navbar() {
   const deleteCart = async () => {
     let url = "http://localhost:8080/cart/deleteCart";
     let res = await axios.post(url);
-    alert("Cart Deleted");
+    console.log(res);
+    alert(res.data);
     nav("/");
   };
 

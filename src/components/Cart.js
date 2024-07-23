@@ -51,9 +51,11 @@ function Cart() {
     <div>
       <Navbar />
       <Container fixed>
+      <br />
+      <br />
         <Grid container spacing={4}>
           {res.map((item) => (
-            <Grid item xs={3}>
+            <Grid item xs={4} md={4}>
               <Card>
                 {/* Render item details here, e.g., item.name, item.price, etc. */}
                 <br />
